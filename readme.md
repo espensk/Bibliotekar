@@ -25,8 +25,13 @@ Applikasjonsrammeverket er autogenert med spring, kotlin og gradle på https://s
 Den bruker spring boot command line runner, fordi det var krevd i oppgaven. 
 Kan argumenteres at det er å overkill for en så enkel oppgave.
 
+Selv om output skal være JSON lister, bruker jeg mer maps internt, for å få enkel sortering og unngå duplikater.
+
 ### Inkluderte rammeverk
-- csv reader
+- csv parsing: Valgte å lese filen manuelt og splitte linjene på | tegnet. 
+  Hadde oppgaven spesifisert csv eller krevd et mer avansert filformat, ville jeg brukt en csv parser fex Apache Commons CSV
+- JSON serialisering: Velger Jackson, som er nærmest defacto standard også i spring
+- logging: logback
 
 ### Datastrukturer
 Denne oppgaven kunne vært naivt løst med en Map<String, Map<String, List<String>>> som mapper kategori -> boknavn -> forfatter
@@ -38,3 +43,7 @@ Kategori(kategorinavn, bøker)
 
 ## Kjøring
 For å starte applikasjonen, kjør `./gradlew bootRun <csv-fil>` i prosjektmappen
+
+## Pass språkbruken
+Siden oppgaven var på norsk og krever norske navn i JSON, har jeg valgt å bruke norsk i koden også.
+Dette medfører dessverre en litt knotete blanding av norsk og engelsk i koden siden standard variable og metodenavn er på engelsk.
