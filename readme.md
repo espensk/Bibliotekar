@@ -19,6 +19,7 @@ sorterter dem i en trestruktur med lister av kategorier og bøker med forfattere
     ...
 ]`
 
+Oppgaven har ingen eksplisitte krav til input eller output, så jeg velger å lese fra en csv type fil og skrive til stdout.
 
 ## Implementasjon
 Applikasjonsrammeverket er autogenert med spring, kotlin og gradle på https://start.spring.io/
