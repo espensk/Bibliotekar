@@ -1,6 +1,10 @@
 package com.jalla.model
 
-data class Kategori(val kategori: String, val bøker: HashMap<String, Bok> = HashMap()) {
+import com.fasterxml.jackson.annotation.JsonGetter
+import com.fasterxml.jackson.annotation.JsonIgnore
+
+data class Kategori(val kategori: String,
+                    @JsonIgnore val bøker: HashMap<String, Bok> = HashMap()) {
 
     constructor(kategori: String, vararg bok: Bok) : this(kategori) {
         bok.forEach { addBok(it) }
@@ -9,8 +13,14 @@ data class Kategori(val kategori: String, val bøker: HashMap<String, Bok> = Has
         return kategori
     }
 
+    @JsonGetter("bøker")
     fun bøker(): List<Bok> {
         return bøker.values.toList()
+    }
+
+    @JsonGetter("antall")
+    fun antall(): Int {
+        return bøker.size
     }
 
     /**
