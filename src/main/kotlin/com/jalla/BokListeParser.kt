@@ -14,12 +14,9 @@ class BokListeParser(val inputStreamReader: InputStreamReader) {
             do {
                 val linje = reader.readLine()
                 if (linje != null) {
-                    val rad = linje.split('|')
-                    if(rad.size != 3) throw IllegalArgumentException("Feil antall elementer i raden: $linje")
-
-                    val forfatterNavn = rad[0].trim()
-                    val bokNavn = rad[1].trim()
-                    val kategoriNavn = rad[2].trim()
+                    val (forfatterNavn, bokNavn, kategoriNavn) =
+                        linje.split('|', limit = 3)
+                            .map { it.trim() }
 
                     val kategori = kategorier.getOrPut(kategoriNavn) { Kategori(kategoriNavn) }
                     // Sjekk om boken allerede fins på en annen kategori
